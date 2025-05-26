@@ -1,0 +1,149 @@
+{
+  "type": "ACHFile",
+  "event": {
+    "filename": "foo.ach",
+    "id": "abc123",
+    "shardKey": "testing",
+    "file": {
+      "id": "",
+      "fileHeader": {
+        "id": "",
+        "immediateDestination": "231380104",
+        "immediateOrigin": "121042882",
+        "fileCreationDate": "210225",
+        "fileCreationTime": "1048",
+        "fileIDModifier": "A",
+        "immediateDestinationName": "Federal Reserve Bank",
+        "immediateOriginName": "My Bank Name"
+      },
+      "batches": [
+        {
+          "batchHeader": {
+            "id": "",
+            "serviceClassCode": 220,
+            "companyName": "Your Company, in",
+            "companyIdentification": "121042882",
+            "standardEntryClassCode": "COR",
+            "companyEntryDescription": "Vendor Pay",
+            "effectiveEntryDate": "210412",
+            "settlementDate": "   ",
+            "originatorStatusCode": 1,
+            "ODFIIdentification": "12104288",
+            "batchNumber": 1
+          },
+          "entryDetails": [
+            {
+              "id": "",
+              "transactionCode": 21,
+              "RDFIIdentification": "23138010",
+              "checkDigit": "4",
+              "DFIAccountNumber": "744-5678-99",
+              "amount": 0,
+              "identificationNumber": "location #23   ",
+              "individualName": "Best Co. #23          ",
+              "discretionaryData": "  ",
+              "addendaRecordIndicator": 1,
+              "traceNumber": "121042880000001",
+              "addenda98": {
+                "id": "",
+                "typeCode": "98",
+                "changeCode": "C01",
+                "originalTrace": "121042880000001",
+                "originalDFI": "12104288",
+                "correctedData": "1918171614",
+                "traceNumber": "091012980000088"
+              },
+              "category": "NOC"
+            }
+          ],
+          "batchControl": {
+            "id": "",
+            "serviceClassCode": 220,
+            "entryAddendaCount": 2,
+            "entryHash": 23138010,
+            "totalDebit": 0,
+            "totalCredit": 0,
+            "companyIdentification": "121042882",
+            "ODFIIdentification": "12104288",
+            "batchNumber": 1
+          },
+          "offset": null
+        }
+      ],
+      "IATBatches": null,
+      "fileControl": {
+        "id": "",
+        "batchCount": 1,
+        "blockCount": 1,
+        "entryAddendaCount": 2,
+        "entryHash": 23138010,
+        "totalDebit": 0,
+        "totalCredit": 0
+      },
+      "fileADVControl": {
+        "id": "",
+        "batchCount": 0,
+        "entryAddendaCount": 0,
+        "entryHash": 0,
+        "totalDebit": 0,
+        "totalCredit": 0
+      },
+      "NotificationOfChange": [
+        {
+          "batchHeader": {
+            "id": "",
+            "serviceClassCode": 220,
+            "companyName": "Your Company, in",
+            "companyIdentification": "121042882",
+            "standardEntryClassCode": "COR",
+            "companyEntryDescription": "Vendor Pay",
+            "effectiveEntryDate": "210412",
+            "settlementDate": "   ",
+            "originatorStatusCode": 1,
+            "ODFIIdentification": "12104288",
+            "batchNumber": 1
+          },
+          "entryDetails": [
+            {
+              "id": "",
+              "transactionCode": 21,
+              "RDFIIdentification": "23138010",
+              "checkDigit": "4",
+              "DFIAccountNumber": "744-5678-99",
+              "amount": 0,
+              "identificationNumber": "location #23   ",
+              "individualName": "Best Co. #23          ",
+              "discretionaryData": "  ",
+              "addendaRecordIndicator": 1,
+              "traceNumber": "121042880000001",
+              "addenda98": {
+                "id": "",
+                "typeCode": "98",
+                "changeCode": "C01",
+                "originalTrace": "121042880000001",
+                "originalDFI": "12104288",
+                "correctedData": "1918171614",
+                "traceNumber": "091012980000088"
+              },
+              "category": "NOC"
+            }
+          ],
+          "batchControl": {
+            "id": "",
+            "serviceClassCode": 220,
+            "entryAddendaCount": 2,
+            "entryHash": 23138010,
+            "totalDebit": 0,
+            "totalCredit": 0,
+            "companyIdentification": "121042882",
+            "ODFIIdentification": "12104288",
+            "batchNumber": 1
+          },
+          "offset": null
+        }
+      ],
+      "ReturnEntries": null,
+      "validateOpts": null
+    }
+  }
+}

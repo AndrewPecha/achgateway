@@ -14,3 +14,66 @@ ACHGateway:
   #     Address: "tcp(localhost:3306)"
   #     User: "achgateway"
   #     Password: "achgateway"
+    Kafka:
+      brokers:
+        - "host.docker.internal:19092"
+#      key: "superuser"
+#      secret: "secretpassword"
+      group: "achgateway"
+      tls: false
+      topic: "ach.outgoing-files"
+    ODFI:
+      Interval: "10m"
+      Processors:
+        Corrections:
+          Enabled: true
+        Prenotes:
+          Enabled: true
+        Returns:
+          Enabled: true
+      ShardNames:
+        - "testing"
+      Storage:
+        Directory: "./storage/"
+        CleanupLocalDirectory: true
+  Sharding:
+    Shards:
+      - name: "testing"
+        cutoffs:
+          timezone: "America/Los_Angeles"
+          windows:
+            - "10:30"
+            - "14:00"
+        uploadAgent: "local-ftp"
+        output:
+          format: "nacha"
+    Mappings:
+      - shardKey: "foo"      # Could be random value (UUID, fixed string)
+        shardName: "testing" # Maps to Sharding.Shards[_].name
+    Default: "testing"
+  Events:
+    Stream:
+      Kafka:
+        Brokers:
+          - "host.docker.internal:19092"
+#        Key: admin
+#        Secret: secret
+        TLS: false
+        Topic: "ach.odfi-file-events"
+#    Transform:
+#      Encoding:
+#        Base64: false
+  Upload:
+    agents:
+      - id: "local-ftp"
+        ftp:
+          hostname: "localhost:2121"
+          username: "admin"
+          password: "123456"
+        paths:
+          inbound: "inbound/"
+          outbound: "outbound/"
+          reconciliation: "reconciliation/"
+          return: "returned/"
+    merging:
+      directory: "./storage/"

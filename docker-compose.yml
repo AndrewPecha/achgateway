@@ -42,7 +42,7 @@ services:
       - "demo:password:::inbound,outbound,reconciliation,returned"
 
   kafka1:
-    image: redpandadata/redpanda:v24.3.6
+    image: redpandadata/redpanda:latest
     container_name: kafka1
     healthcheck:
       {
@@ -74,6 +74,26 @@ services:
       - --mode dev-container
       - --default-log-level=info
 
+  console:
+    image: docker.redpanda.com/redpandadata/console:latest
+    restart: on-failure
+    entrypoint: /bin/sh
+    command: -c "echo \"$$CONSOLE_CONFIG_FILE\" > /tmp/config.yml; /app/console"
+    environment:
+      CONFIG_FILEPATH: /tmp/config.yml
+      CONSOLE_CONFIG_FILE: |
+        kafka:
+          brokers: ["kafka1:9092"]
+          schemaRegistry:
+            enabled: true
+            urls: ["http://kafka1:8081"]
+    ports:
+      - "8080:8080"
+    networks:
+      - intranet
+    depends_on:
+      - kafka1
+
   topics:
     image: redpandadata/redpanda:v24.3.6
     depends_on:
@@ -86,6 +106,7 @@ services:
       - --brokers kafka1:9092
       - create
       - ach.outgoing-files
+      - ach.odfi-file-events
 
 networks:
   intranet: {}
