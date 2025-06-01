@@ -138,6 +138,8 @@ func (agent *FTPTransferAgent) UploadFile(ctx context.Context, f File) error {
 	}
 
 	pathToWrite := filepath.Join(agent.OutboundPath(), f.Filepath)
+	//correction for windows replacing forward slashes with backslashes - connections to ftp folders are impacted otherwise
+	pathToWrite = strings.ReplaceAll(pathToWrite, "\\", "/")
 
 	_, span := telemetry.StartSpan(ctx, "agent-ftp-upload", trace.WithAttributes(
 		attribute.String("achgateway.hostname", agent.Hostname()),

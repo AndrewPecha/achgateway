@@ -71,9 +71,9 @@ ACHGateway:
           username: "admin"
           password: "123456"
         paths:
-          inbound: "inbound/"
-          outbound: "outbound/"
-          reconciliation: "reconciliation/"
-          return: "returned/"
+          inbound: "/inbound/"
+          outbound: "/outbound/"
+          reconciliation: "/reconciliation/"
+          return: "/returned/"
     merging:
       directory: "./storage/"

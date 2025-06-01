@@ -213,6 +213,7 @@ func NewEnvironment(env *Environment) (*Environment, error) {
 
 		// append HTTP routes
 		web.NewFilesController(env.Config.Logger, env.Config.Inbound.HTTP, httpFiles, fileReceiver.CancellationResponses).AppendRoutes(env.PublicRouter)
+		web.NewEntriesController(env.Config.Logger, env.Config.Inbound.HTTP, httpFiles).AppendRoutes(env.PublicRouter)
 
 		// shard mapping HTTP routes
 		shardMappingService, err := shards.NewShardMappingService(stime.NewStaticTimeService(), env.Config.Logger, shardRepository)
